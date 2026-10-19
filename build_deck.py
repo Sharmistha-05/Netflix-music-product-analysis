@@ -141,8 +141,11 @@ _text(s, 0.8, 1.8, 11.5, 0.6, "PRODUCT MANAGEMENT", size=16, color=RED, bold=Tru
 _text(s, 0.8, 2.45, 11.5, 1.6, "Launching Netflix Music", size=54, color=WHITE, bold=True)
 _text(s, 0.8, 3.55, 11.5, 0.8, "Product sense, problem definition and MVP for a personalized audio app",
       size=22, color=RGBColor(0xC8, 0xC8, 0xC8))
-_text(s, 0.8, 5.6, 11.5, 0.5, "Sharmistha  |  Based on Netflix_Dataset.xlsx (3 sheets)", size=15,
-      color=RGBColor(0x9A, 0x9A, 0x9A))
+_rect(s, 0.8, 5.05, 0.6, 0.04, RED)
+_text(s, 0.8, 5.25, 11.5, 0.5, "Sharmistha Chakrabortty", size=20, color=WHITE, bold=True)
+_text(s, 0.8, 5.7, 11.5, 0.4, "Aspiring Product Manager", size=15, color=RGBColor(0xC8, 0xC8, 0xC8))
+_text(s, 0.8, 6.3, 11.5, 0.4, "UC San Diego Extended Studies  |  AI-Powered Product Management Professional Program",
+      size=14, color=RGBColor(0x9A, 0x9A, 0x9A))
 
 bullets_slide("Agenda", "The story runs from why, to who, to what we build first", [
     "Part 1  The art of why: why Netflix, why now, the business case",
