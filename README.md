@@ -1,6 +1,6 @@
 # Netflix Music: Product Analysis
 
-Course-end Product Management project: **Launching Netflix Music, personalized streaming for audio enthusiasts.**
+Product Management project: **Launching Netflix Music, personalized streaming for audio enthusiasts.**
 
 This code reads `data/Netflix_Dataset.xlsx` (3 sheets), computes the analysis, and generates every chart, framework visual and the PowerPoint write-up for the project.
 
