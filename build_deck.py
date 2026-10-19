@@ -137,7 +137,7 @@ scores = analysis.score_features(features)
 s = prs.slides.add_slide(BLANK)
 _rect(s, 0, 0, 13.333, 7.5, DARK)
 _rect(s, 0, 0, 13.333, 0.11, RED)
-_text(s, 0.8, 1.8, 11.5, 0.6, "COURSE-END PROJECT  |  PRODUCT MANAGEMENT", size=16, color=RED, bold=True)
+_text(s, 0.8, 1.8, 11.5, 0.6, "PRODUCT MANAGEMENT", size=16, color=RED, bold=True)
 _text(s, 0.8, 2.45, 11.5, 1.6, "Launching Netflix Music", size=54, color=WHITE, bold=True)
 _text(s, 0.8, 3.55, 11.5, 0.8, "Product sense, problem definition and MVP for a personalized audio app",
       size=22, color=RGBColor(0xC8, 0xC8, 0xC8))
