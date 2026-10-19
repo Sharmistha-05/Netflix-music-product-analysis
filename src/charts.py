@@ -70,6 +70,27 @@ def _wrap(text, width):
     return "\n".join(lines)
 
 
+def cover_page():
+    """Dark title page with author, program and date; matches slide 1 of the deck."""
+    dark, soft = "#141414", "#C8C8C8"
+    fig = plt.figure(figsize=(W, H), facecolor=dark)
+    fig.add_artist(Rectangle((0, 0.985), 1, 0.015, transform=fig.transFigure, color=RED))
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+    ax.text(6, 88, C.COVER["label"], fontsize=15, color=RED, fontweight="bold", va="center")
+    ax.text(6, 79, C.COVER["title"], fontsize=50, color="white", fontweight="bold", va="center")
+    ax.text(6, 69, C.COVER["subtitle"], fontsize=20, color=soft, va="center")
+    ax.plot([6, 94], [58, 58], color="#404040", lw=1)
+    for k, (lab, val) in enumerate(C.COVER["details"]):
+        y = 50 - k * 9.5
+        ax.text(6, y, lab, fontsize=11.5, color=RED, fontweight="bold", va="center")
+        ax.text(24, y, val, fontsize=19 if k == 0 else 16, color="white" if k == 0 else "#E0E0E0",
+                fontweight="bold" if k == 0 else "normal", va="center")
+    return fig
+
+
 # ---- customer research (Sheet 1) ----------------------------------------------
 def segment_overview(seg):
     fig = _fig("Binge-Watchers are the largest and most tech-comfortable segment",

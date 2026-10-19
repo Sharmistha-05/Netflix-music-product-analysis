@@ -287,3 +287,17 @@ MVP_OUT = [
     ("Collaborative playlists", "No user asked; a share link covers the need"),
     ("Karaoke, hi-fi audio", "Delighters for later; not needed to prove the core"),
 ]
+
+# ---- cover page (shared by the deck and the visuals PDF) -------------------------
+COVER = {
+    "label": "PRODUCT MANAGEMENT",
+    "title": "Launching Netflix Music",
+    "subtitle": "Product sense, problem definition and MVP for a personalized audio app",
+    "details": [
+        ("SUBMITTED BY", "Sharmistha Chakrabortty"),
+        ("ROLE", "Aspiring Product Manager"),
+        ("UNIVERSITY", "UC San Diego Extended Studies"),
+        ("PROGRAM", "AI-Powered Product Management Professional Program"),
+        ("DATE", "October 19, 2026"),
+    ],
+}

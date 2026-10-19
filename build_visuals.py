@@ -21,11 +21,14 @@ def main(data_path=analysis.DEFAULT_DATA):
     figs = charts.all_figures(users, journey, seg, scores, pain, motive)
 
     with PdfPages(OUT / "Netflix_Music_Visuals.pdf") as pdf:
+        title_page = charts.cover_page()
+        pdf.savefig(title_page, facecolor=title_page.get_facecolor())
+        plt.close(title_page)
         cover = charts._fig("Netflix Music: Project Visuals",
                             "Charts, personas, journey maps, frameworks and roadmap for the Netflix Music launch",
                             source=None)
         for i, (_, caption, _) in enumerate(figs):
-            cover.text(0.06 + (i // 12) * 0.46, 0.76 - (i % 12) * 0.055, f"{i + 1:>2}.  {caption}", fontsize=12.5)
+            cover.text(0.06 + (i // 14) * 0.47, 0.77 - (i % 14) * 0.052, f"{i + 1:>2}.  {caption}", fontsize=12.5)
         pdf.savefig(cover)
         plt.close(cover)
         for name, caption, build in figs:

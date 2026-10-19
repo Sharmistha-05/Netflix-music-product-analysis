@@ -133,19 +133,19 @@ def table_slide(title, subtitle, header, rows, widths, notes=None, size=12, top=
 users, journey, features = analysis.load()
 scores = analysis.score_features(features)
 
-# ---- 1. title and framing -----------------------------------------------------------
+# ---- 1. cover page -------------------------------------------------------------------
 s = prs.slides.add_slide(BLANK)
 _rect(s, 0, 0, 13.333, 7.5, DARK)
 _rect(s, 0, 0, 13.333, 0.11, RED)
-_text(s, 0.8, 1.8, 11.5, 0.6, "PRODUCT MANAGEMENT", size=16, color=RED, bold=True)
-_text(s, 0.8, 2.45, 11.5, 1.6, "Launching Netflix Music", size=54, color=WHITE, bold=True)
-_text(s, 0.8, 3.55, 11.5, 0.8, "Product sense, problem definition and MVP for a personalized audio app",
-      size=22, color=RGBColor(0xC8, 0xC8, 0xC8))
-_rect(s, 0.8, 5.05, 0.6, 0.04, RED)
-_text(s, 0.8, 5.25, 11.5, 0.5, "Sharmistha Chakrabortty", size=20, color=WHITE, bold=True)
-_text(s, 0.8, 5.7, 11.5, 0.4, "Aspiring Product Manager", size=15, color=RGBColor(0xC8, 0xC8, 0xC8))
-_text(s, 0.8, 6.3, 11.5, 0.4, "UC San Diego Extended Studies  |  AI-Powered Product Management Professional Program",
-      size=14, color=RGBColor(0x9A, 0x9A, 0x9A))
+_text(s, 0.8, 0.95, 11.5, 0.5, C.COVER["label"], size=16, color=RED, bold=True)
+_text(s, 0.8, 1.45, 11.5, 1.2, C.COVER["title"], size=54, color=WHITE, bold=True)
+_text(s, 0.8, 2.6, 11.5, 0.8, C.COVER["subtitle"], size=22, color=RGBColor(0xC8, 0xC8, 0xC8))
+_rect(s, 0.8, 3.75, 11.7, 0.02, RGBColor(0x40, 0x40, 0x40))
+for k, (lab, val) in enumerate(C.COVER["details"]):
+    y = 4.05 + k * 0.62
+    _text(s, 0.8, y, 2.4, 0.4, lab, size=12, color=RED, bold=True)
+    _text(s, 3.3, y - 0.05, 9.2, 0.5, val, size=20 if k == 0 else 17, color=WHITE if k == 0 else RGBColor(0xE0, 0xE0, 0xE0),
+          bold=(k == 0))
 
 bullets_slide("Agenda", "The story runs from why, to who, to what we build first", [
     "Part 1  The art of why: why Netflix, why now, the business case",
