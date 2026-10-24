@@ -2,7 +2,7 @@
 
 Product Management project: **Launching Netflix Music, personalized streaming for audio enthusiasts.**
 
-This code reads `data/Netflix_Dataset.xlsx` (3 sheets), computes the analysis, and generates every chart, framework visual and the PowerPoint write-up for the project.
+This code reads `data/Netflix_Dataset.xlsx` (3 tables), computes the analysis, and generates every chart, framework visual and the PowerPoint write-up for the project.
 
 ## Product thinking in one line
 
@@ -12,13 +12,13 @@ The project starts with **the art of why** (why Netflix should build this at all
 
 ## What the code does
 
-| Step | Dataset sheet | Output |
+| Step | Dataset table | Output |
 | --- | --- | --- |
-| Customer research and personas | Sheet 1 (10 users) | Segment summary, pain-point and motivation themes, 3 personas, jobs to be done |
-| User journey mapping | Sheet 2 (4 stages x 3 segments) | One journey map per persona with emotion curve, pain points, opportunities |
-| Idea Funnel | Sheets 1-2 | 20 ideas -> 15 screened -> 12 refined -> 5 MVP features |
+| Customer research and personas | Users (10 users) | Segment summary, pain-point and motivation themes, 3 personas, jobs to be done |
+| User journey mapping | Journey (4 stages x 3 segments) | One journey map per persona with emotion curve, pain points, opportunities |
+| Idea Funnel | Users + Journey | 20 ideas -> 15 screened -> 12 refined -> 5 MVP features |
 | Competitive analysis | Market view | Benchmark heatmap, SWOT, BCG matrix |
-| Feature prioritization | Sheet 3 (5 features) | RICE, WSJF, value vs effort, Kano, MoSCoW, combined ranking |
+| Feature prioritization | Features (5 features) | RICE, WSJF, value vs effort, Kano, MoSCoW, combined ranking |
 | MVP and roadmap | All | MVP definition and scope, 4-phase roadmap, KPIs |
 
 ### Formulas
@@ -40,9 +40,9 @@ The project starts with **the art of why** (why Netflix should build this at all
 
 ```
 netflix-music-product-analysis/
-├── data/Netflix_Dataset.xlsx   # input dataset (Sheets 1-3)
+├── data/Netflix_Dataset.xlsx   # input dataset (users, journey, features)
 ├── src/
-│   ├── analysis.py             # loads the sheets, computes segments, themes, RICE and WSJF
+│   ├── analysis.py             # loads the dataset tables, computes segments, themes, RICE and WSJF
 │   ├── content.py              # personas, journeys, ideas, SWOT, BCG, Kano, MoSCoW, MVP, roadmap
 │   └── charts.py               # every chart and framework visual (matplotlib)
 ├── build_visuals.py            # step 1-2: CSV tables + PNG figures + visuals PDF
@@ -63,6 +63,6 @@ To use another copy of the dataset: `python build_visuals.py path/to/Netflix_Dat
 
 ## Notes
 
-- Sheet 1 has 10 users, so percentages describe the sample, not the market.
-- Kano, MoSCoW, SWOT, BCG and the competitor ratings are analyst judgement reasoned from the dataset; RICE and WSJF are computed directly from Sheet 3.
+- The users table has 10 users, so percentages describe the sample, not the market.
+- Kano, MoSCoW, SWOT, BCG and the competitor ratings are analyst judgement reasoned from the dataset; RICE and WSJF are computed directly from the features table.
 - Roadmap dates (January 2027 kickoff) and KPI targets are planning assumptions.
