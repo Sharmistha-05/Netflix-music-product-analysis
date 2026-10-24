@@ -1,8 +1,8 @@
 """Load the Netflix dataset and compute every number used in the report.
 
-Sheet 1 -> user segments, pain-point themes, purchase motivations
-Sheet 2 -> journey stages per segment
-Sheet 3 -> RICE and WSJF feature scores
+Users table -> user segments, pain-point themes, purchase motivations
+Journey table -> journey stages per segment
+Features table -> RICE and WSJF feature scores
 """
 from collections import Counter
 from pathlib import Path
@@ -40,11 +40,9 @@ MOTIVATION_THEMES = {
 
 
 def load(path=DEFAULT_DATA):
-    """Return the three sheets as DataFrames: users, journey, features."""
-    xl = pd.read_excel(path, sheet_name=None)
-    users = xl["Sheet 1"].dropna(how="all")
-    journey = xl["Sheet 2"].dropna(how="all")
-    features = xl["Sheet 3"].dropna(how="all")
+    """Return the three dataset tables as DataFrames: users, journey, features."""
+    xl = list(pd.read_excel(path, sheet_name=None).values())  # workbook order: users, journey, features
+    users, journey, features = (t.dropna(how="all") for t in xl[:3])
     return users, journey, features
 
 
