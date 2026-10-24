@@ -43,7 +43,7 @@ PERSONAS = [
 
 STAGES = ["Discovery", "Engagement", "Subscription decision", "Usage experience"]
 
-# Behaviour rows come from Sheet 2; touchpoint, emotion, pain and opportunity are inferred.
+# Behaviour rows come from the dataset; touchpoint, emotion, pain and opportunity are inferred.
 # emotion_score: 1 (frustrated) .. 5 (delighted), used for the emotion curve.
 JOURNEYS = {
     "Binge-Watcher": {
@@ -111,7 +111,7 @@ IDEAS = [
 
 FUNNEL = [
     ("Ideas brainstormed", 20, "From personas, journeys and market trends"),
-    ("Pass user-need screen", 15, "Answers a need in Sheet 1 or Sheet 2"),
+    ("Pass user-need screen", 15, "Answers a user need from the research"),
     ("Refined features", 12, "Overlapping ideas merged"),
     ("Selected for MVP", 5, "Unique to Netflix, top pain, or table stakes"),
 ]
@@ -253,7 +253,7 @@ PROBLEM = {
     "Problem": "They can't easily find music and audio that fits their taste, mood and the shows they love. "
                "No app connects what they watch with what they hear.",
     "Evidence": "4 of 10 users report a discovery or personalization pain; 3 of 10 report missing exclusive, "
-                "regional or language content; Engagement is the weakest journey stage for all 3 segments (Sheet 2).",
+                "regional or language content; Engagement is the weakest journey stage for all 3 segments.",
     "Why it matters (user)": "Time lost scrolling; the story ends at the credits; local culture is buried.",
     "Why it matters (Netflix)": "Listening hours earn nothing today; a second daily habit lowers churn.",
     "How might we": "How might we turn what members watch into what they love to listen to?",
