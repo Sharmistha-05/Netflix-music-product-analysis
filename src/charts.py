@@ -91,10 +91,10 @@ def cover_page():
     return fig
 
 
-# ---- customer research (Sheet 1) ----------------------------------------------
+# ---- customer research -----------------------------------------------------
 def segment_overview(seg):
     fig = _fig("Binge-Watchers are the largest and most tech-comfortable segment",
-               "Users per segment and their tech comfort level (Sheet 1, 10 users)")
+               "Users per segment and their tech comfort level (10 users)")
     ax = fig.add_axes([0.16, 0.14, 0.32, 0.62])
     segs = list(seg["Segment"])
     ax.barh(segs[::-1], seg["Users"][::-1], color=[SEGMENT_COLORS[s] for s in segs[::-1]], height=0.5)
@@ -127,7 +127,7 @@ def segment_overview(seg):
 
 def age_distribution(users):
     fig = _fig("The core audience is 22 to 45; Regional Listeners are the youngest",
-               "Each dot is one user (Sheet 1); short bar = segment average, dashed line = overall average")
+               "Each dot is one user; short bar = segment average, dashed line = overall average")
     ax = fig.add_axes([0.2, 0.15, 0.74, 0.6])
     segs = list(SEGMENT_COLORS)
     for i, s in enumerate(segs):
@@ -170,18 +170,18 @@ def _theme_bars(series, title, subtitle):
 
 def pain_themes(pain):
     return _theme_bars(pain, "Discovery is the most common pain point (4 of 10 users)",
-                       "Users per pain-point theme; each user's pain point from Sheet 1 is assigned to one theme")
+                       "Users per pain-point theme; each user's pain point is assigned to one theme")
 
 
 def motivation_themes(motive):
     return _theme_bars(motive, "Exclusive content and a better experience drive payment equally",
-                       "Users per purchase-motivation theme (Sheet 1); exclusives and experience tie at 4 each")
+                       "Users per purchase-motivation theme; exclusives and experience tie at 4 each")
 
 
 def persona_card(p, users):
     seg = p["segment"]
     colr = SEGMENT_COLORS[seg]
-    fig = _fig(f"Persona: {p['name']}", f"Built from {p['based_on']} (Sheet 1)")
+    fig = _fig(f"Persona: {p['name']}", f"Built from {p['based_on']}")
     ax = _canvas(fig)
     _box(ax, 0, 0, 30, 100, fc=PANEL, ec=PANEL)
     from matplotlib.patches import Ellipse
@@ -203,16 +203,16 @@ def persona_card(p, users):
     return fig
 
 
-# ---- journeys (Sheet 2) -------------------------------------------------------
+# ---- journeys ---------------------------------------------------------
 def journey_map(seg, journey_df):
     colr = SEGMENT_COLORS[seg]
     j = C.JOURNEYS[seg]
     persona = next(p for p in C.PERSONAS if p["segment"] == seg)
     fig = _fig(f"Journey map: {persona['name']}",
-               "Behaviour from Sheet 2; touchpoints, emotions, pain points and opportunities inferred from Sheets 1 and 2")
+               "Touchpoints, emotions, pain points and opportunities inferred from the customer research")
     ax = _canvas(fig, (0.03, 0.05, 0.94, 0.76))
     behaviours = list(journey_df[seg])
-    rows = [("Behaviour\n(Sheet 2)", behaviours), ("Touchpoint", j["touchpoint"]), ("Emotion", None),
+    rows = [("Behaviour", behaviours), ("Touchpoint", j["touchpoint"]), ("Emotion", None),
             ("Pain point", j["pain"]), ("Opportunity", j["opportunity"])]
     x0, colw = 13, 21.7
     for k, st in enumerate(C.STAGES):
@@ -255,7 +255,7 @@ def journey_insights():
 # ---- idea funnel ----------------------------------------------------------------
 def idea_funnel():
     fig = _fig("Twenty ideas narrowed to five MVP features",
-               "Idea Funnel: screen for user need, merge overlaps, select for the MVP", source="Source: report analysis of Sheets 1 and 2")
+               "Idea Funnel: screen for user need, merge overlaps, select for the MVP", source="Source: report analysis")
     ax = _canvas(fig, (0.05, 0.08, 0.9, 0.74))
     top = C.FUNNEL[0][1]
     y = 92
@@ -277,7 +277,7 @@ def idea_funnel():
 
 def idea_table():
     fig = _fig("Every idea traced to a user need, and its outcome",
-               "Idea Funnel detail: 5 MVP, 7 later phases, 3 merged, 5 dropped", source="Source: report analysis of Sheets 1 and 2")
+               "Idea Funnel detail: 5 MVP, 7 later phases, 3 merged, 5 dropped", source="Source: report analysis")
     ax = _canvas(fig, (0.04, 0.05, 0.92, 0.76))
     cols = [(0, "Idea"), (42, "Need it addresses"), (82, "Outcome")]
     for x, t in cols:
@@ -376,7 +376,7 @@ def bcg_matrix():
     return fig
 
 
-# ---- prioritization (Sheet 3) -------------------------------------------------
+# ---- prioritization ---------------------------------------------------
 def _short(f):
     return {"AI-Generated Personalized Playlists": "AI-generated playlists",
             "Music Discovery Based on Netflix Watch History": "Watch-history discovery",
@@ -402,17 +402,17 @@ def _score_bars(scores, col, title, subtitle, fmt):
 
 def rice_chart(scores):
     return _score_bars(scores, "RICE", "AI playlists and watch-history discovery lead RICE by about 2x",
-                       "RICE = Reach x Impact x Confidence / Effort (Sheet 3)", lambda v: f"{v:,.0f}")
+                       "RICE = Reach x Impact x Confidence / Effort", lambda v: f"{v:,.0f}")
 
 
 def wsjf_chart(scores):
     return _score_bars(scores, "WSJF", "The same two features tie for first on WSJF (4.8)",
-                       "WSJF = (Business Value + Time Criticality + Risk Reduction) / Effort (Sheet 3)", lambda v: f"{v:.2f}")
+                       "WSJF = (Business Value + Time Criticality + Risk Reduction) / Effort", lambda v: f"{v:.2f}")
 
 
 def value_effort(scores):
     fig = _fig("The MVP features deliver the most value for the least effort",
-               "Value vs effort: RICE score against effort (Sheet 3); dot size = reach")
+               "Value vs effort: RICE score against effort; dot size = reach")
     ax = fig.add_axes([0.1, 0.14, 0.82, 0.62])
     for _, r in scores.iterrows():
         top = r["RICE_rank"] <= 2
@@ -430,7 +430,7 @@ def value_effort(scores):
     ax.text(5.0, 4000, "Quick wins: high value, low effort", fontsize=10.5, color=INK2, ha="center")
     ax.set_xlim(4, 9)
     ax.set_ylim(0, 170000)
-    ax.set_xlabel("Effort (Sheet 3 scale, higher = more work)")
+    ax.set_xlabel("Effort (higher = more work)")
     ax.set_ylabel("RICE score")
     ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v / 1000:.0f}k"))
     ax.grid(color=GRID)
@@ -439,7 +439,7 @@ def value_effort(scores):
 
 def priority_matrix(scores):
     fig = _fig("All four frameworks agree on the launch order",
-               "Combined ranking: RICE and WSJF from Sheet 3; Kano and MoSCoW reasoned from personas and journeys")
+               "Combined ranking: RICE and WSJF computed from the dataset; Kano and MoSCoW reasoned from personas and journeys")
     ax = _canvas(fig, (0.04, 0.06, 0.92, 0.74))
     heads = [(0, "Rank"), (6, "Feature"), (42, "RICE"), (52, "WSJF"), (61, "Kano"), (78, "MoSCoW"), (91, "Phase")]
     for x, t in heads:
@@ -540,7 +540,7 @@ def kpi_board():
 # ---- product sense ---------------------------------------------------------------
 def five_whys():
     fig = _fig("The art of why: five questions lead to Netflix's one unfair advantage",
-               "Asking 'why' until the answer is something only Netflix can do", source="Source: report analysis of Sheets 1 and 2")
+               "Asking 'why' until the answer is something only Netflix can do", source="Source: report analysis")
     ax = _canvas(fig, (0.05, 0.06, 0.9, 0.75))
     n = len(C.FIVE_WHYS)
     for i, (q, a) in enumerate(C.FIVE_WHYS):
@@ -557,7 +557,7 @@ def five_whys():
 
 def problem_definition():
     fig = _fig("Problem definition: no app connects what people watch with what they hear",
-               "Problem statement built from the customer research", source="Source: Netflix_Dataset.xlsx, Sheets 1 and 2")
+               "Problem statement built from the customer research", source="Source: Netflix_Dataset.xlsx")
     ax = _canvas(fig, (0.05, 0.06, 0.9, 0.75))
     keys = ["Who", "Problem", "Evidence", "Why it matters (user)", "Why it matters (Netflix)"]
     y = 100
@@ -576,8 +576,8 @@ def problem_definition():
 
 def jtbd_chart():
     fig = _fig("Jobs to be done: each segment hires the app for a different job",
-               "When I ... I want to ... so I can ...  (from Sheet 1 motivations and Sheet 2 journeys)",
-               source="Source: report analysis of Sheets 1 and 2")
+               "When I ... I want to ... so I can ...  (from user motivations and journeys)",
+               source="Source: report analysis")
     ax = _canvas(fig, (0.05, 0.08, 0.9, 0.74))
     for i, (seg, when, want, so) in enumerate(C.JTBD):
         x = i * 34
@@ -614,7 +614,7 @@ def mvp_definition():
 
 def mvp_scope():
     fig = _fig("MVP scope: build the core advantage first, defer the rest on purpose",
-               "What is in the MVP, what waits, and why", source="Source: report analysis (RICE/WSJF from Sheet 3)")
+               "What is in the MVP, what waits, and why", source="Source: report analysis (RICE/WSJF from the dataset)")
     ax = _canvas(fig, (0.05, 0.06, 0.9, 0.75))
     _box(ax, 0, 0, 48, 100, fc="#FDECEC", ec="#FDECEC")
     _box(ax, 52, 0, 48, 100, fc=PANEL, ec=PANEL)
