@@ -199,16 +199,16 @@ image_slide("problem_definition", "The problem statement: who, what, evidence fr
                                   "How Might We question that frames the whole product.")
 table_slide("Project scope: six steps, each answering a question", "What the problem statement asks for and why",
             ["Step", "What we do", "Data", "Question it answers"],
-            [["1. Personas", "Segment users, build personas", "Sheet 1", "Who are we building for?"],
-             ["2. Journey maps", "Map discovery to daily use", "Sheet 2", "Where does the experience break?"],
-             ["3. Idea Funnel", "Generate, screen and refine ideas", "Sheets 1-2", "What could solve it?"],
+            [["1. Personas", "Segment users, build personas", "Survey data", "Who are we building for?"],
+             ["2. Journey maps", "Map discovery to daily use", "Journey data", "Where does the experience break?"],
+             ["3. Idea Funnel", "Generate, screen and refine ideas", "Survey and journey data", "What could solve it?"],
              ["4. SWOT and BCG", "Benchmark Spotify, Apple, Amazon", "Market", "Where can Netflix win?"],
-             ["5. Prioritization", "RICE, WSJF, Kano, MoSCoW", "Sheet 3", "What do we build first?"],
+             ["5. Prioritization", "RICE, WSJF, Kano, MoSCoW", "Feature scores", "What do we build first?"],
              ["6. Roadmap", "MVP, Growth, Differentiation, Monetization", "All", "When and how do we deliver?"]],
             [2.2, 4.3, 1.6, 4.0], size=14)
 
 # ---- Part 2: customer research --------------------------------------------------------
-section(2, "Defining the problem", "Who the users are, what hurts, and what they would pay for (Sheet 1)")
+section(2, "Defining the problem", "Who the users are, what hurts, and what they would pay for")
 image_slide("segment_overview", "Three segments: Binge-Watchers (4), Casual Listeners (3), Regional Listeners (3). "
                                 "Binge-Watchers have no low tech-comfort users, so they are the natural early adopters.")
 image_slide("age_distribution", "Users are 22 to 45, average 31.4. Regional Listeners are the youngest (27.3).")
@@ -222,10 +222,10 @@ image_slide("jobs_to_be_done", "Jobs to be done: the job each segment hires Netf
                                "designing for the job, not the feature list.")
 
 # ---- Part 3: journeys ------------------------------------------------------------------
-section(3, "Where the experience breaks", "End-to-end journey for each persona (Sheet 2)")
+section(3, "Where the experience breaks", "End-to-end journey for each persona")
 for seg in C.JOURNEYS:
-    image_slide(f"journey_{seg.split()[0].lower()}", f"Journey map for the {seg}. Behaviour row from Sheet 2; the other "
-                                                     "rows are inferred from Sheets 1 and 2. Rebuild in Figma as one frame per persona.")
+    image_slide(f"journey_{seg.split()[0].lower()}", f"Journey map for the {seg}. Behaviour row from the dataset; the other "
+                                                     "rows are inferred from the customer research. Rebuild in Figma as one frame per persona.")
 image_slide("journey_insights", "Cross-journey insights that shape the MVP and roadmap.")
 
 # ---- Part 4: ideas ----------------------------------------------------------------------
@@ -250,7 +250,7 @@ image_slide("bcg_matrix", "Netflix Music is a Question Mark. Video streaming is 
                           "audio is the potential Star.")
 
 # ---- Part 6: prioritization ---------------------------------------------------------------
-section(6, "What to build first", "Four frameworks applied to the five features in Sheet 3")
+section(6, "What to build first", "Four frameworks applied to the five features")
 image_slide("rice", "RICE = Reach x Impact x Confidence / Effort. Top two score about double the third.")
 image_slide("wsjf", "WSJF = (Business Value + Time Criticality + Risk Reduction) / Effort. Top two tie at 4.8.")
 image_slide("value_effort", "The top two sit in the quick-win zone: highest value, lowest effort (5).")
